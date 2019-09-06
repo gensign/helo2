@@ -6,6 +6,9 @@ const app = express();
 const session = require('express-session');
 const massive = require('massive');
 
+const authCtrl = require('./controllers/authController');
+const postCtrl =require('./controllers/postController');
+
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
 const PORT = SERVER_PORT || 4000;
 
@@ -26,9 +29,10 @@ massive(CONNECTION_STRING).then(db => {
 });
 
 // Authenication ENDPOINTS
-// app.post()
-// app.post()
+app.post('/api/auth/register', authCtrl.register);
+app.post('/api/auth/login', authCtrl.login);
 
 // POST ENDPOINTS
-// 
-// 
+// app.get('', );
+// app.get('', );
+// app.post('', ); 
