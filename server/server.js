@@ -26,11 +26,12 @@ app.use(session({
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db);
     app.listen(PORT, ()=> console.log(`Listening on PORT ${PORT}`));
-});
+}).catch(() => console.log('Unable to connect to Database'));
 
 // Authenication ENDPOINTS
 app.post('/api/auth/register', authCtrl.register);
 app.post('/api/auth/login', authCtrl.login);
+app.delete('/auth/logout', authCtrl.logout);
 
 // POST ENDPOINTS
 // app.get('', );
