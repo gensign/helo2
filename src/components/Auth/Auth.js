@@ -21,7 +21,7 @@ export default class Auth extends Component {
     render() {
         return (
             <div>
-                
+                Authenication
             </div>
         )
     }

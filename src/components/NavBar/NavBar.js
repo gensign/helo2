@@ -4,7 +4,7 @@ export default class NavBar extends Component {
     render() {
         return (
             <div>
-                
+                NavBar
             </div>
         )
     }
