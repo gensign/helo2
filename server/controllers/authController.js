@@ -36,28 +36,22 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
-    console.log('Login');
-    console.log('');
-    const db = req.app.get('db');
-    const { user_id, username, password } = req.body;
-    console.log('username: ', username, password);
-    console.log('');
-    const foundUser = await db.find_user([username, password]);
-    console.log('foundUser: ', foundUser);
+    const db = req.app.get('db')
+    const { user_id, username, password } = req.body
+    console.log('username: ', username, password)
+    console.log('')
+    const user = await db.find_user([username, password])
+    console.log('user: ', user)
     if (user.length > 0) {
-        console.log('Found User');
-        console.log('');
         res.status(200).send({ logIn: true })
     } else {
         res.status(401).send({ loggedIn: false })
     }
-};
+}
 
 const logout = (req, res) => {
 
 };
-
-
 
 module.exports = {
     register,

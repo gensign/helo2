@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class Posts extends Component {
     state = {
@@ -8,8 +9,9 @@ export default class Posts extends Component {
         author: '',
         authorPicture: ''
     }
-    getPostInfo = () => {
 
+    getPostInfo = () => {
+        axios.get().then().catch();
     }
     
     render() {

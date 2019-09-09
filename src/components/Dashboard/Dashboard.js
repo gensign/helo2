@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class Dashboard extends Component {
     state = {
@@ -14,11 +15,23 @@ export default class Dashboard extends Component {
     }
 
 
-    getAllPosts = () => {
+    // getAllPosts = () => {
+    //     console.log('Getting Posts');
+    //     console.log('');
+    //     axios.get(`/api/posts/${postid}`).then(res => {
 
-    }
+    //     }).catch();
+    // }
 
     resetSearch = () => {
+        this.setState({
+            search: ''
+        });
+    }
+
+    searchPosts = () => {
+        console.log('seaching Posts');
+        console.log('');
 
     }
 
@@ -30,7 +43,7 @@ export default class Dashboard extends Component {
                     <input type='text'
                         key='search'
                         onChange={this.handleChange}
-                        placeholder="Search By Title" />
+                        placeholder="Search" />
                     <button onClick={this.searchPosts}>Search</button>
                     <button>Reset</button>
                     <h4>CheckboxCommingSoon</h4>

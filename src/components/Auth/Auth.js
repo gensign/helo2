@@ -1,66 +1,58 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { setUser } from '../../redux/reducer'
+import { connect } from 'react-redux'
 
-export default class Auth extends Component {
+class Auth extends Component {
     state = {
         username: '',
         password: ''
     }
 
-    handleChange = (event) => {
+    handleChange(e, key) {
         this.setState({
-            [event.target.key]: event.target.value
-        });
+            [key]: e.target.value
+        })
     }
 
     login = () => {
-        console.log(this.state);
-        const { username, password } = this.state;
-        console.log(username);
-        // currently only sending the catch err. 
+        console.log(this.state)
+        const { username, password } = this.state
+        console.log(username)
         axios.post('/api/auth/login', { username, password })
             .then(res => {
-                this.props.setUser({ username, password });
-                this.props.history.push('/dashboard');
+                this.props.setUser({ username, password })
+                this.props.history.push('/dashboard')
             }).catch(err => {
-                alert('Username and/or Password does not exist. Try again');
+                alert('Username and/or Password does not exist. Try again')
             })
-        console.log(username);
+        console.log(username)
     }
 
     register = () => {
-        console.log(this.state);
-        const { username, password, } = this.state;
-        console.log(username, password);
-        // only sending the catch. does not currently register new user. 
+        console.log(this.state)
+        const { username, password, } = this.state
+        console.log(username, password)
         axios.post('/api/auth/register', { username, password })
             .then(res => {
-                console.log(username);
-                this.props.setUser({ username, password });
-                console.log(username);
-                this.props.history.push('/dashboard');
+                console.log(username)
+                this.props.setUser({ username, password })
+                console.log(username)
+                this.props.history.push('/dashboard')
             }).catch(err => {
-                alert('Username and/or Password in use');
-            });
+                alert('Username and/or Password in use')
+            })
     }
 
     render() {
         return (
             <div>
-                <h1>Helo</h1>
-                <span>Username:
-                    <input type='text'
-                        key='username'
-                        onChange={this.handleChange} />
-                </span>
-                <span>Password:
-                    <input type='password'
-                        key='password'
-                        onChange={this.handleChange} />
-                </span>
-                <button onClick={this.login}>Login</button>
+                <span><input onChange={e => this.handleChange(e, 'username')} type='text' placeholder='Username' /></span>
+                <span><input onChange={e => this.handleChange(e, 'password')} type='password' placeholder='Pasword' /></span>
+                <button onClick={this.login}>Log In</button>
                 <button onClick={this.register}>Register</button>
             </div>
         )
     }
 }
+export default connect(null, { setUser })(Auth)

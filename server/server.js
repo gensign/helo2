@@ -34,6 +34,6 @@ app.post('/api/auth/login', authCtrl.login);
 app.delete('/auth/logout', authCtrl.logout);
 
 // POST ENDPOINTS
-// app.get('', );
-// app.get('', );
-// app.post('', ); 
+// app.get('/api/posts/:userid', postCtrl.getUser);
+// app.get('/api/posts/:postid', postCtrl.getPosts);
+// app.post('/api/posts/:userid', postCtrl.addPosts); 
