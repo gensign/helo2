@@ -1,14 +1,25 @@
 import React from 'react';
-import NavBar from './components/NavBar/NavBar';
+import NavBar from './components/NavBar/NavBar'
 import router from './routes/router'
+import { withRouter } from 'react-router-dom'
 
-function App() {
+function App(props) {
   return (
     <div className="App">
-      <NavBar />
-      {router}
+      {
+        props.location.pathname === "/" ? (
+          <div>
+            {router} </div>
+        ) : (
+            <div>
+              <NavBar />
+              {router}
+            </div>
+          )
+      }
     </div>
   );
 }
 
-export default App;
+export default withRouter(App);
+

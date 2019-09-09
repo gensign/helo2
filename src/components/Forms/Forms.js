@@ -1,24 +1,40 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import axios from 'axios';
 
-export default class Forms extends Component {
+export default class Form extends Component {
     state = {
         title: '',
-        img: '',
+        image: '',
         content: ''
     }
 
-    handleChange = () => {
-
+    handleChange(e, key) {
+        this.setState({
+            [key]: e.target.value
+        });
     }
 
-    submitNewPost = () => {
+    // submitNewPost() {
+    //     axios.post(`api/post/${user_id}`)
+    //         .then().catch(err => {
+    //             alert('Unable to to Post')
+    //         })
+    // }
 
-    }
-    
     render() {
         return (
             <div>
-                Forms
+                <h1>New Post</h1>
+                <span>Title:
+                    <input onChange={e => this.handleChange(e, 'title')} />
+                </span>
+                {/* <img src='' href='' /> */}
+                <span>Image URL:
+                    <input onChange={e => this.handleChange(e, 'image')} />
+                </span>
+                <span>Span:
+                    <input onChange={e => this.handleChange(e, 'content')} />
+                </span>
             </div>
         )
     }

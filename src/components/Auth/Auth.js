@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
 
 export default class Auth extends Component {
     state = {
@@ -59,10 +58,8 @@ export default class Auth extends Component {
                         key='password'
                         onChange={this.handleChange} />
                 </span>
-                <Link to='/dashboard'>
-                    <button onClick={this.login}>Login</button>
-                    <button onClick={this.register}>Register</button>
-                </Link>
+                <button onClick={this.login}>Login</button>
+                <button onClick={this.register}>Register</button>
             </div>
         )
     }
